@@ -31,29 +31,6 @@ This project demonstrates:
 
 ---
 
-## 🧱 Project Structure
-StudentActivityPortal/
-│
-├── Pages/
-│ ├── Index.cshtml
-│ ├── Index.cshtml.cs
-│ ├── Activities.cshtml
-│ ├── Activities.cshtml.cs
-│ ├── Shared/
-│ │ └── _Layout.cshtml
-│ ├── _ViewImports.cshtml
-│ └── _ViewStart.cshtml
-│
-├── wwwroot/
-│ ├── css/
-│ ├── js/
-│
-├── appsettings.json
-├── Program.cs
-└── StudentActivityPortal.csproj
-
----
-
 ## 🔄 Application Flow
 
 1. User visits Home page (HTTP GET)
