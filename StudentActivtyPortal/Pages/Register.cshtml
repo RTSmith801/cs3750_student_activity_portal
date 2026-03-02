@@ -1,0 +1,68 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Activity Registration";
+}
+
+<h2>Activity Registration</h2>
+
+<form method="post">
+
+    <!-- Panel 1: Personal Info -->
+    <div class="card mb-3">
+        <div class="card-header">Personal Information</div>
+        <div class="card-body">
+
+            <div class="mb-3">
+                <label asp-for="Input.Full Name" class="form-label"></label>
+                <input asp-for="Input.FullName" class="form-control" />
+                <span asp-validation-for="Input.FullName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Input.Email" class="form-label"></label>
+                <input asp-for="Input.Email" class="form-control" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Panel 2: Activity Details -->
+    <div class="card mb-3">
+        <div class="card-header">Activity Details</div>
+        <div class="card-body">
+
+            <div class="mb-3">
+                <label asp-for="Input.ActivityName"></label>
+                <select asp-for="Input.ActivityName" class="form-select">
+                    <option value="">-- Select Activity --</option>
+                    <option>Basketball Tournament</option>
+                    <option>Hackathon</option>
+                    <option>Art Workshop</option>
+                </select>
+                <span asp-validation-for="Input.ActivityName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Input.ActivityDate"></label>
+                <input asp-for="Input.ActivityDate" type="date" class="form-control" />
+                <span asp-validation-for="Input.ActivityDate" class="text-danger"></span>
+            </div>
+
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.SuccessMessage))
+{
+    <div class="alert alert-success mt-3">
+        @Model.SuccessMessage
+    </div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

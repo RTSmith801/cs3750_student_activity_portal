@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using StudentActivityPortal.Pages;
 
-namespace StudentActivtyPortal.Pages;
+namespace StudentActivityPortal.Pages;
 
 public class ActivitiesModel : PageModel
 {
