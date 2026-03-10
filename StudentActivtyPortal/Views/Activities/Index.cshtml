@@ -1,0 +1,47 @@
+﻿@model IEnumerable<StudentActivityPortal.Models.Activity>
+
+@{
+    ViewData["Title"] = "Activities";
+}
+
+<h2>Activities</h2>
+
+<!-- Add Activity button -->
+<a asp-controller="Activities" asp-action="Create" class="btn btn-primary mb-3">Add Activity</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var activity in Model)
+            {
+                <tr>
+                    <td>@activity.Title</td>
+                    <td>@activity.Description</td>
+                    <td>@activity.ActivityDate.ToString("MM/dd/yyyy")</td>
+                    <td>@activity.Location</td>
+                    <td>
+                        <a asp-controller="Activities" asp-action="Edit" asp-route-id="@activity.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-controller="Activities" asp-action="Delete" asp-route-id="@activity.Id" class="btn btn-danger btn-sm">Delete</a>
+                        <a asp-controller="Activities" asp-action="Select" asp-route-id="@activity.Id" class="btn btn-info btn-sm">Select</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center">No activities found.</td>
+            </tr>
+        }
+    </tbody>
+</table>
