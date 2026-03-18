@@ -1,0 +1,17 @@
+﻿@model StudentActivityPortal.Models.Activity
+
+<h2>Activity Details</h2>
+
+<div>
+    <strong>Title:</strong> @Model.Title
+</div>
+
+<div>
+    <strong>Description:</strong> @Model.Description
+</div>
+
+<div>
+    <strong>Date:</strong> @Model.ActivityDate.ToShortDateString()
+</div>
+
+<a asp-action="Index">Back to List</a>
