@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Student Activity Portal Home";
+}
+
+<h2>Student Activity Portal</h2>
+
+<form asp-action="Index" method="post">
+    <div class="mb-3">
+        <label for="Name" class="form-label">Enter your name:</label>
+        <input type="text" name="name" value="@ViewBag.Name" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@if (ViewBag.Message != null)
+{
+    <br />
+    <p class="text-primary">@ViewBag.Message</p>
+}
+
+<br />
+<a asp-controller="Activities" asp-action="Index" class="btn btn-secondary">View Activities</a>

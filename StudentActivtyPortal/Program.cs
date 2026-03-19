@@ -2,9 +2,14 @@ using StudentActivityPortal.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// ======================
+// SERVICES
+// ======================
 
-builder.Services.AddRazorPages();
+// Add MVC (Controllers + Views)
+builder.Services.AddControllersWithViews();
 
+// Register ADO.NET Data Access Layer
 builder.Services.AddScoped<ActivityDAL>(provider =>
 {
     var config = provider.GetRequiredService<IConfiguration>();
@@ -14,10 +19,18 @@ builder.Services.AddScoped<ActivityDAL>(provider =>
 // Enable Session
 builder.Services.AddSession();
 
+
+// ======================
+// BUILD APP
+// ======================
+
 var app = builder.Build();
 
 
-// Configure the HTTP request pipeline.
+// ======================
+// MIDDLEWARE PIPELINE
+// ======================
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
@@ -25,16 +38,24 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseStaticFiles();
 app.UseRouting();
-
-// ✅ Session middleware should come AFTER routing, BEFORE endpoints
 app.UseSession();
-
 app.UseAuthorization();
 
-app.MapStaticAssets();
-app.MapRazorPages()
-   .WithStaticAssets();
+
+// ======================
+// ROUTING
+// ======================
+
+// Default route → Home/Index
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
+// ======================
+// RUN APP
+// ======================
 
 app.Run();
