@@ -16,6 +16,12 @@ builder.Services.AddScoped<ActivityDAL>(provider =>
     return new ActivityDAL(config.GetConnectionString("DefaultConnection")!);
 });
 
+builder.Services.AddScoped<UserDAL>(provider =>
+{
+    var config = provider.GetRequiredService<IConfiguration>();
+    return new UserDAL(config.GetConnectionString("DefaultConnection")!);
+});
+
 // Enable Session
 builder.Services.AddSession();
 
